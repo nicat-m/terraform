@@ -1,5 +1,6 @@
 # Terraform Project
 
+
 This repository contains the Terraform configuration for managing our infrastructure. The structure of the repository is organized to separate concerns and improve maintainability.
 
 ## Repository Structure
