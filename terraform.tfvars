@@ -1,0 +1,6 @@
+vsphere_datacenter      = "Non_VxRail_Datacenter"
+vsphere_compute_cluster = "Non_VxRail_Cluster"
+vsphere_datastore       = "DC2_E590H_02_dev_Test"
+vsphere_network         = "VLAN61"
+vsphere_resource_pool   = "DC2_AVIS2_DEV"
+vm_template_name        = "Redhat8_free"
