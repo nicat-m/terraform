@@ -1,30 +1,45 @@
-module "vsphere" {
+module "k8s-cluster" {
   for_each = local.projects
-  source = "./modules/centralized-vms"
-  env          = each.value.env
-  project_name = each.value.project_name
+  source   = "./modules/centralized-kubernetes-cluster"
 
+  # Variables for each VMS
+  project_name            = each.value.project_name
+  vsphere_drs_cluster     = var.vsphere_drs_cluster
   vsphere_datacenter      = var.vsphere_datacenter
-  vsphere_compute_cluster = var.vsphere_compute_cluster
-  vsphere_datastore       = var.vsphere_datastore
-  vsphere_network         = var.vsphere_network
-  vsphere_resource_pool   = var.vsphere_resource_pool
-  vm_template_name        = var.vm_template_name
-
-  vm_vcpu                 = each.value.vm_vcpu
-  vm_memory               = each.value.vm_memory
-  vm_ipv4_gateway         = each.value.vm_ipv4_gateway
-  vm_ipv4_netmask         = each.value.vm_ipv4_netmask
-  vm_dns_servers          = each.value.vm_dns_servers
-  dns_suffix_list         = each.value.dns_suffix_list
-  vm_disk_label           = each.value.vm_disk_label
-  vm_disk_size            = each.value.vm_disk_size
-  vm_disk_thin            = each.value.vm_disk_thin
+  vsphere_resource_pool   = each.value.vsphere_resource_pool
+  vm_template             = var.vm_template
+  vm_user                 = var.vm_user
+  vm_password             = var.vm_password
+  vm_privilege_password   = var.vm_privilege_password
+  vm_name_prefix          = each.value.vm_name_prefix
+  vm_datastore            = each.value.vm_datastore
+  vm_netmask              = each.value.vm_netmask
+  vm_network              = each.value.vm_network
+  vm_gateway              = each.value.vm_gateway
+  vm_dns                  = each.value.vm_dns
+  vm_dns_suffix           = each.value.vm_dns_suffix
   vm_domain               = each.value.vm_domain
-  vms                     = each.value.vms
+  vm_master_cpu           = each.value.vm_master_cpu
+  vm_master_ram           = each.value.vm_master_ram
+  vm_master_disk_size     = each.value.vm_master_disk_size
+  vm_distro               = each.value.vm_distro
+  vm_cidr                 = each.value.vm_cidr
+  vm_master_count         = each.value.vm_master_count
+  vm_master_start_ip      = each.value.vm_master_start_ip
+  vm_master_end_ip        = each.value.vm_master_end_ip
+  vm_worker_count         = each.value.vm_worker_count
+  vm_worker_start_ip      = each.value.vm_worker_start_ip
+  vm_worker_end_ip        = each.value.vm_worker_end_ip
+  vm_worker_cpu           = each.value.vm_worker_cpu
+  vm_worker_ram           = each.value.vm_worker_ram
+  vm_worker_disk_size     = each.value.vm_worker_disk_size
+  vm_haproxy_cpu          = each.value.vm_haproxy_cpu
+  vm_haproxy_ram          = each.value.vm_haproxy_ram
+  vm_haproxy_count        = each.value.vm_haproxy_count
+  vm_haproxy_start_ip     = each.value.vm_haproxy_start_ip
+  vm_haproxy_end_ip       = each.value.vm_haproxy_end_ip
+  vm_haproxy_vip          = each.value.vm_haproxy_vip
+  virtual_router_id       = each.value.virtual_router_id
+  k8s_kubespray_version   = each.value.k8s_kubespray_version
+  k8s_version             = each.value.k8s_version
 }
-
-
-
-
-

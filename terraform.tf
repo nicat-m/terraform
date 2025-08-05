@@ -4,11 +4,14 @@ terraform {
       source  = "hashicorp/vsphere"
       version = "2.2.0"
     }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "3.0.2"
+    }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+    }
   }
-  backend "http" {
-
-  }
-  #required_version = "~> 1.7.5"
 }
 
 provider "vsphere" {

@@ -1,0 +1,20 @@
+.idea
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Ignore Terraform lock files
+*.tflock
+*.lock*
+
+# Ignore .terraform directory
+.terraform/
+*.tfvars
+# Ignore .plan files
+*.plan
+
+# Ignore kubespray and config folder
+
+files/ansible/kubespray
+files/config
+files/kubespray-env

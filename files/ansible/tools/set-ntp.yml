@@ -1,0 +1,14 @@
+- hosts: all
+  tasks:
+    - name: get os-release
+      raw: cat /etc/os-release
+      register: os_release
+      changed_when: false
+      environment: {}
+
+    - name: Replace server line in chrony.conf
+      ansible.builtin.lineinfile:
+        path: /etc/chrony.conf
+        regexp: '^server .*'
+        line: "server {{ VM_GATEWAY }} iburst"
+        backup: yes
